@@ -8,12 +8,16 @@ using System.Threading.Tasks;
 namespace MyStackTest
 {
     [TestClass]
-    public class MyStackBaseTest : MyStackBase
+    public class MyStackBaseTest
     {
+        private class MySillyStackBaseTest : MyStackBase<string> 
+        {
+
+        }
         [TestMethod]
         public void FirstTest()
         {
-            MyStackBaseTest myStackBaseTest = new MyStackBaseTest();
+            MySillyStackBaseTest myStackBaseTest = new MySillyStackBaseTest();
             Assert.AreEqual(myStackBaseTest.Count, 0);
         }
     }
