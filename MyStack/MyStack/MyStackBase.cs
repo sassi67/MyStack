@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyStack
 {
-    public abstract class MyStackBase : IMyStack<int>
+    public abstract class MyStackBase<T> : IMyStack<T>
     {
         protected int count;
         public int Count { get { return count; } }
@@ -21,17 +21,32 @@ namespace MyStack
             throw new NotImplementedException();
         }
 
-        public int Peek()
+        public bool Contains(T item)
         {
             throw new NotImplementedException();
         }
 
-        public int Pop()
+        public T Peek()
         {
             throw new NotImplementedException();
         }
 
-        public void Push(int item)
+        public T Pop()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Push(T item)
+        {
+            throw new NotImplementedException();
+        }
+
+        T IMyStack<T>.Peek()
+        {
+            throw new NotImplementedException();
+        }
+
+        T IMyStack<T>.Pop()
         {
             throw new NotImplementedException();
         }

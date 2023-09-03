@@ -406,3 +406,4 @@ MyStack/.vs
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio
 /MyStack/MyStackTest/UnitTest1.cs
 /MyStack/MyStackTest/MyStackBaseTest.cs
+/MyStack/MyStack/MyNode.cs
