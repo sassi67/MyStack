@@ -10,9 +10,32 @@ namespace MyStackTest
     [TestClass]
     public class MyStackBaseTest
     {
-        private class MySillyStackBaseTest : MyStackBase<string> 
+        private class MySillyStackBaseTest : MyStackBase<string>
         {
+            public override void Clear()
+            {
+                throw new NotImplementedException();
+            }
 
+            public override bool Contains(string elem)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override string Peek()
+            {
+                throw new NotImplementedException();
+            }
+
+            public override string Pop()
+            {
+                throw new NotImplementedException();
+            }
+
+            public override void Push(string elem)
+            {
+                throw new NotImplementedException();
+            }
         }
         [TestMethod]
         public void FirstTest()

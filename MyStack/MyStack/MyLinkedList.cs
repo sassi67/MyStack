@@ -10,13 +10,28 @@ namespace MyStack
 
     public class MyLinkedList<T>
     {
-        public int Count { get; set; }
+        private MyNode<T> _head;
+        private MyNode<T> _tail;
+        public int Count
+        {
+            get
+            {
+                int cnt = 0;
+                MyNode<T> temp = _head;
+                while (temp != null)
+                {
+                    cnt++;
+                    temp = temp.Next;
+                }
+                return cnt;
+            }
+        }
 
         public MyNode<T> First
         {
             get
             {
-                return null;
+                return _head;
             }
         }
 
@@ -24,7 +39,7 @@ namespace MyStack
         {
             get
             {
-                return null;
+                return _tail;
             }
         }
 
@@ -33,32 +48,85 @@ namespace MyStack
 
         public void Clear()
         {
-
+            _head = null;
+            _tail = null;
         }
 
         public MyNode<T> AddLast(T elem)
         {
-            return null;
+            if (elem == null) return null;
+            MyNode<T> myNode = new MyNode<T>(elem);
+            if (_head == null)
+            {
+                _head = myNode;
+                _tail = myNode;
+                return myNode;
+            } 
+            _tail.Next = myNode;
+            _tail = _tail.Next;
+            return myNode;
         }
 
         public MyNode<T> AddFirst(T elem)
         {
-            return null;
+            if (elem == null) return null;
+            MyNode<T> myNode = new MyNode<T>(elem);
+            if (_head == null)
+            {
+                _head = myNode;
+                _tail = myNode;
+                return myNode;
+            }
+            myNode.Next = _head;
+            _head = myNode;
+            return myNode;
         }
 
         public bool Contains(T elem)
         {
+            if(elem == null || _head == null) return false;
+            MyNode<T> temp = _head;
+            while (temp.Next != null) 
+            {
+                if(temp.Data.Equals(elem)) return true;
+                temp = temp.Next;
+            }
             return false;
         }
 
         public MyNode<T> RemoveLast()
         {
-            return null;
+            if (_head == null) return null;
+            MyNode<T> rtn = _tail; 
+            if (_head == _tail)
+            {
+                Clear();
+                return rtn;
+            }
+            MyNode<T> temp = _head;
+            for (int i = 0; i < Count - 2; i++) 
+            {
+                temp = temp.Next;
+            }
+            temp.Next = null; 
+            _tail = temp; 
+            return rtn;
         }
 
         public MyNode<T> AddAfter(MyNode<T> node, T elem)
         {
-            return null;
+            if (node == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if(_head == null)
+            {
+                throw new InvalidOperationException("Unexisting node");
+            }
+            if (!Contains(elem))
+            {
+                throw new InvalidOperationException("Unexisting node");
+            }
         }
     }
 }

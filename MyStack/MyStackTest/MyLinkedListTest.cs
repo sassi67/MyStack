@@ -69,7 +69,6 @@ namespace MyStackTest
 
             Assert.IsFalse(myStringLinkedList.Contains("Gigi Di Meo"));
             Assert.IsTrue(myStringLinkedList.Contains("Daniela"));
-
         }
 
         [TestMethod]
