@@ -127,5 +127,48 @@ namespace MyStackTest
             Assert.IsNotNull(expectedException);
         }
 
+        [TestMethod]
+        public void TestMyLinkedListForeach()
+        {
+            MyStringLinkedList myStringLinkedList = new MyStringLinkedList();
+
+            myStringLinkedList.AddFirst("Alberto");
+            myStringLinkedList.AddFirst("Sacilotto");
+            myStringLinkedList.AddFirst("Daniela");
+            myStringLinkedList.AddFirst("Minudel");
+            foreach (string node in myStringLinkedList)
+            {
+                Console.WriteLine(node.ToString());
+            }
+
+        }
+
+        [TestMethod]
+        public void TestMyLinkedListIndexer()
+        {
+            MyStringLinkedList myStringLinkedList = new MyStringLinkedList();
+
+            myStringLinkedList.AddLast("Alberto");
+            myStringLinkedList.AddLast("Sacilotto");
+            myStringLinkedList.AddLast("Daniela");
+            myStringLinkedList.AddLast("Minudel");
+
+            Assert.AreEqual(new MyNode<string>("Alberto"), myStringLinkedList[0]);
+            Assert.AreEqual(new MyNode<string>("Sacilotto"), myStringLinkedList[1]);
+            Assert.AreEqual(new MyNode<string>("Daniela"), myStringLinkedList[2]);
+            Assert.AreEqual(new MyNode<string>("Minudel"), myStringLinkedList[3]);
+
+            Exception expectedException = null;
+            try
+            {
+                MyNode<string> _ = myStringLinkedList[100];
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                expectedException = ex;
+            }
+            Assert.IsNotNull(expectedException);
+        }
+
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace MyStack
 {
 
-    public class MyLinkedList<T>
+    public class MyLinkedList<T> : IEnumerable<T>
     {
         private MyNode<T> _head;
         private MyNode<T> _tail;
@@ -28,8 +28,8 @@ namespace MyStack
         }
 
         public MyNode<T> First
-        {
-            get
+        { 
+            get 
             {
                 return _head;
             }
@@ -43,7 +43,7 @@ namespace MyStack
             }
         }
 
-        public MyLinkedList() { }
+        public MyLinkedList() { Count = 0; }
         public MyLinkedList(IEnumerable<T> collection) { }
 
         public void Clear()
@@ -51,7 +51,7 @@ namespace MyStack
             _head = null;
             _tail = null;
         }
-
+        
         public MyNode<T> AddLast(T elem)
         {
             if (elem == null) return null;
@@ -82,7 +82,7 @@ namespace MyStack
             return myNode;
         }
 
-        public bool Contains(T elem)
+        public bool Contains(T elem) 
         {
             if(elem == null || _head == null) return false;
             MyNode<T> temp = _head;
