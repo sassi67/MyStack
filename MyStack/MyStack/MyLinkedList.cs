@@ -123,10 +123,27 @@ namespace MyStack
             {
                 throw new InvalidOperationException("Unexisting node");
             }
-            if (!Contains(elem))
+            if(_head.Next == null) 
             {
+                if (_head.Data.Equals(node.Data))
+                {
+                    return AddLast(elem);
+                }
                 throw new InvalidOperationException("Unexisting node");
             }
+            MyNode<T> temp = _head;
+            while (temp.Next != null)
+            {
+                if (temp.Next.Data.Equals(node.Data))
+                {
+                    MyNode<T> newNode = new MyNode<T>(elem);
+                    newNode.Next = temp.Next;
+                    temp.Next = newNode;
+                    return newNode;
+                }
+                temp = temp.Next;
+            }
+            throw new InvalidOperationException("Unexisting node");
         }
     }
 }
