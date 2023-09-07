@@ -1,0 +1,174 @@
+﻿/*
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MyStack
+{
+
+    public class MyLinkedList<T> 
+    {
+        private MyNode<T> head = null;
+
+        public int Count {get; set;}
+
+        public MyNode<T> First
+        { 
+            get 
+            {
+                return head;
+            } 
+        }
+
+        public MyNode<T> Last
+        {
+            get
+            {
+                if (head == null) return null;
+                MyNode<T> node = head;
+
+                while (node.Next != null) node = node.Next;
+                return node;    
+            }
+        }
+
+        public MyLinkedList() { Count = 0; }
+        public MyLinkedList(IEnumerable<T> collection) { }
+
+        public void Clear()
+        {
+            head = null;
+            Count = 0; 
+        }
+        
+        public MyNode<T> AddLast(T elem)
+        {
+            MyNode<T> newNode = new MyNode<T>(elem);
+            Count++;
+            if (head == null) 
+            {  
+                head = newNode; 
+                return newNode;
+            }
+
+            MyNode<T> node = head;
+            while (node.Next != null) 
+                node = node.Next;
+            node.Next = newNode;
+
+            return newNode;
+        }
+
+        public MyNode<T> AddFirst(T elem)
+        {
+            MyNode<T> newNode = new MyNode<T>(elem);
+            Count++;
+            if (head == null)
+            {
+                head = newNode;
+                return newNode;
+            }
+            newNode.Next = head;
+            head = newNode;
+
+            return newNode;
+        }
+
+        public bool Contains(T elem) 
+        {
+            if (head == null) return false;
+            
+            MyNode<T> node = head;
+            while(!node.Data.Equals(elem))
+            {
+                node = node.Next;
+                if (node == null) return false;
+            }
+
+            return true;
+        }
+
+        public MyNode<T> RemoveLast()
+        {
+            if (head == null) return null;
+            Count--;
+            if (head.Next == null) return head;
+
+            MyNode<T> pre = head;
+            MyNode<T> node = head.Next;
+
+            while (node.Next != null)
+            {
+                pre = node;
+                node = node.Next;
+            }
+            pre.Next = null;
+            return node; 
+        }
+
+        public MyNode<T> AddAfter(MyNode<T> node, T elem)
+        {
+            if (node == null)
+            {
+                throw new ArgumentNullException();
+            }
+            // empty list
+            if (head == null)
+            {
+                throw new InvalidOperationException("Unexisting node");
+            }
+
+            // one element list
+            MyNode<T> newNode = new MyNode<T>(elem);
+            if (head.Next == null)
+            {
+                if (head.Equals(node))
+                {
+                    Count++;
+                    head.Next = newNode;
+                    return newNode;
+                }
+                throw new InvalidOperationException("Unexisting node");
+            }
+            // more elements list
+            MyNode<T> thisNode = head;
+            while (thisNode.Next != null)
+            {
+                if (thisNode.Equals(node))
+                {
+                    Count++;
+                    newNode.Next = thisNode.Next;
+                    thisNode.Next = newNode;
+                    return newNode;
+                }
+                thisNode = thisNode.Next;
+            }
+            // this is the last node
+            if (thisNode.Equals(node))
+            {
+                Count++;
+                thisNode.Next = newNode;
+                return newNode;
+            }
+
+            throw new InvalidOperationException("Unexisting node");
+        }
+
+    }
+}
+
+
+        public override bool Equals(object? obj)
+        {
+            // https://learn.microsoft.com/en-us/dotnet/api/system.object.equals?view=net-7.0#system-object-equals(system-object)
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            MyNode<T> node = (MyNode<T>)obj;
+            return data.Equals(node.Data); 
+        }
+*/

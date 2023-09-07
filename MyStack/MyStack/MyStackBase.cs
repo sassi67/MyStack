@@ -8,48 +8,13 @@ namespace MyStack
 {
     public abstract class MyStackBase<T> : IMyStack<T>
     {
-        protected int count;
+        protected int count = 0;
         public int Count { get { return count; } }
 
-        public void Clear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Contains(int item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Contains(T item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public T Peek()
-        {
-            throw new NotImplementedException();
-        }
-
-        public T Pop()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Push(T item)
-        {
-            throw new NotImplementedException();
-        }
-
-        T IMyStack<T>.Peek()
-        {
-            throw new NotImplementedException();
-        }
-
-        T IMyStack<T>.Pop()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Clear();
+        public abstract bool Contains(T elem);
+        public abstract T Peek();
+        public abstract T Pop();
+        public abstract void Push(T elem);
     }
-
 }

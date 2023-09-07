@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MyStack;
+﻿using MyStack;
 
 namespace MyStackTest
 {
@@ -11,12 +6,15 @@ namespace MyStackTest
     public class MyNodeTest
     {
         [TestMethod]
-        public void Test() 
+        public void TestMyNode()
         {
+            MyNode<string> myFirstNode = new MyNode<string>("Giggino");
+            Assert.AreEqual("Giggino", myFirstNode.Data);
+            Assert.IsNull(myFirstNode.Next);
 
-            MyNode<string> myNode = new MyNode<string>("abc");
-            Assert.AreEqual("abc", myNode.Data);
-            Assert.AreEqual(null, myNode.Next);
+            MyNode<string> mySecondNode = new MyNode<string>("Giggino");
+            Assert.AreEqual(myFirstNode, mySecondNode);
+
         }
     }
 }
