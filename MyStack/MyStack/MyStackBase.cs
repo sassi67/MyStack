@@ -11,45 +11,11 @@ namespace MyStack
         protected int count;
         public int Count { get { return count; } }
 
-        public void Clear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Contains(int item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Contains(T item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public T Peek()
-        {
-            throw new NotImplementedException();
-        }
-
-        public T Pop()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Push(T item)
-        {
-            throw new NotImplementedException();
-        }
-
-        T IMyStack<T>.Peek()
-        {
-            throw new NotImplementedException();
-        }
-
-        T IMyStack<T>.Pop()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Clear();
+        public abstract bool Contains(T item);
+        public abstract T Peek();
+        public abstract T Pop();
+        public abstract void Push(T item);
     }
 
 }
