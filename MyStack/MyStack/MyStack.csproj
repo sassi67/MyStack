@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Compile Include="MyLinkedList.cs.IMPL" />
+    <Compile Include="MyStack.cs.IMPL" />
   </ItemGroup>
 
 </Project>
