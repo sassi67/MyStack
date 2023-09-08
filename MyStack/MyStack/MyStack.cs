@@ -11,27 +11,29 @@ namespace MyStack
     {
         public override void Clear()
         {
-           
+            linkedList.Clear();
         }
 
         public override bool Contains(T elem)
         {
-            return false;
+            return linkedList.Contains(elem);
         }
 
         public override T Peek()
         {
-            return null;
+            return linkedList.Last.Data;
         }
 
         public override T Pop()
         {
-            return null;   
+            T rtn = linkedList.Last.Data;
+            linkedList.RemoveLast();
+            return rtn;
         }
 
         public override void Push(T elem)
         {
-            
+            linkedList.AddLast(elem);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -41,14 +43,19 @@ namespace MyStack
 
         public IEnumerator<T> GetEnumerator()
         {
-            return null;
+            
+            return linkedList.GetEnumerator();
         }
 
         public T this[int i]
         {
             get
             {
-                return null;
+                if(i < 0  || i >= linkedList.Count)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                return linkedList[i].Data;
             }
         }
 

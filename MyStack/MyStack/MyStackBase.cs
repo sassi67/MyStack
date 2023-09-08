@@ -8,8 +8,8 @@ namespace MyStack
 {
     public abstract class MyStackBase<T> : IMyStack<T>
     {
-        protected int count;
-        public int Count { get { return count; } }
+        protected MyLinkedList<T> linkedList = new MyLinkedList<T>();
+        public int Count { get { return linkedList.Count; } }
 
         public abstract void Clear();
         public abstract bool Contains(T item);

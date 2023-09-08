@@ -43,7 +43,7 @@ namespace MyStack
             }
         }
 
-        public MyLinkedList() { Count = 0; }
+        public MyLinkedList() {}
         public MyLinkedList(IEnumerable<T> collection) { }
 
         public void Clear()
@@ -145,5 +145,76 @@ namespace MyStack
             }
             throw new InvalidOperationException("Unexisting node");
         }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return new MyLinkedListIterator<T>(_head);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        public MyNode<T> this[int i]
+        {
+            get
+            {
+                if(i < 0 || i >= Count)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                MyNode<T> myNode = _head;
+                for (int x = 0; x < i; x++)
+                {
+                    myNode = myNode.Next;
+                }
+                return myNode;
+            }
+        } 
+
+        private class MyLinkedListIterator<T> : IEnumerator<T>
+        {
+            private MyNode<T> _current;
+            private MyNode<T> _head;
+
+            public MyLinkedListIterator(MyNode<T> head)
+            {
+                _head = head;
+                _current = head;
+            }
+
+            public T Current
+            {
+                get
+                {
+                    if (_current == null)
+                    {
+                        throw new InvalidOperationException();
+                    }
+                    return _current.Data;
+                }
+            }
+
+            object IEnumerator.Current => Current;
+
+            public void Dispose()
+            {
+                
+            }
+
+            public bool MoveNext()
+            {
+                if(_current != null)
+                {
+                    _current = _current.Next;
+                }
+                return _current != null;
+            }
+
+            public void Reset()
+            {
+                _current = _head;
+            }
+        }
     }
+
 }
