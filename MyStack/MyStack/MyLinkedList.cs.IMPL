@@ -156,7 +156,35 @@ namespace MyStack
 
             throw new InvalidOperationException("Unexisting node");
         }
+        
+        public IEnumerator<T> GetEnumerator()
+        {
+            MyNode<T> node = head;
+            while (node != null)
+            {
+                yield return node.Data; 
+                node = node.Next;
+            }
+        }
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public MyNode<T> this[int i]
+        {
+            get { 
+                if (i < 0 || i >= Count || Count == 0) throw new IndexOutOfRangeException();
+
+                MyNode<T> thisNode = head;
+                for (int j = 0; j < i; j++)
+                {
+                    thisNode = thisNode.Next;
+                }
+                return thisNode;
+            }
+        }
     }
 }
 

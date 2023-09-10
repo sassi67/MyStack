@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace MyStack
 {
 
-    public class MyLinkedList<T>
+    public class MyLinkedList<T> : IEnumerable<T>
     {
         private MyNode<T> _head;
         private MyNode<T> _tail;
@@ -28,8 +28,8 @@ namespace MyStack
         }
 
         public MyNode<T> First
-        {
-            get
+        { 
+            get 
             {
                 return _head;
             }
@@ -43,7 +43,7 @@ namespace MyStack
             }
         }
 
-        public MyLinkedList() { }
+        public MyLinkedList() {}
         public MyLinkedList(IEnumerable<T> collection) { }
 
         public void Clear()
@@ -51,7 +51,7 @@ namespace MyStack
             _head = null;
             _tail = null;
         }
-
+        
         public MyNode<T> AddLast(T elem)
         {
             if (elem == null) return null;
@@ -82,7 +82,7 @@ namespace MyStack
             return myNode;
         }
 
-        public bool Contains(T elem)
+        public bool Contains(T elem) 
         {
             if(elem == null || _head == null) return false;
             MyNode<T> temp = _head;
@@ -145,5 +145,76 @@ namespace MyStack
             }
             throw new InvalidOperationException("Unexisting node");
         }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return new MyLinkedListIterator<T>(_head);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        public MyNode<T> this[int i]
+        {
+            get
+            {
+                if(i < 0 || i >= Count)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                MyNode<T> myNode = _head;
+                for (int x = 0; x < i; x++)
+                {
+                    myNode = myNode.Next;
+                }
+                return myNode;
+            }
+        } 
+
+        private class MyLinkedListIterator<T> : IEnumerator<T>
+        {
+            private MyNode<T> _current;
+            private MyNode<T> _head;
+
+            public MyLinkedListIterator(MyNode<T> head)
+            {
+                _head = head;
+                _current = head;
+            }
+
+            public T Current
+            {
+                get
+                {
+                    if (_current == null)
+                    {
+                        throw new InvalidOperationException();
+                    }
+                    return _current.Data;
+                }
+            }
+
+            object IEnumerator.Current => Current;
+
+            public void Dispose()
+            {
+                
+            }
+
+            public bool MoveNext()
+            {
+                if(_current != null)
+                {
+                    _current = _current.Next;
+                }
+                return _current != null;
+            }
+
+            public void Reset()
+            {
+                _current = _head;
+            }
+        }
     }
+
 }

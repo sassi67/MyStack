@@ -8,13 +8,14 @@ namespace MyStack
 {
     public abstract class MyStackBase<T> : IMyStack<T>
     {
-        protected int count = 0;
-        public int Count { get { return count; } }
+        protected MyLinkedList<T> linkedList = new MyLinkedList<T>();
+        public int Count { get { return linkedList.Count; } }
 
         public abstract void Clear();
-        public abstract bool Contains(T elem);
+        public abstract bool Contains(T item);
         public abstract T Peek();
         public abstract T Pop();
-        public abstract void Push(T elem);
+        public abstract void Push(T item);
     }
+
 }
